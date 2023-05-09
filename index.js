@@ -1,17 +1,9 @@
 const inquirer = require("inquirer");
-const { Shape, Circle, Triangle, Square } = require("./lib/shapes.js");
+const { createLogo } = require("./lib/utils.js");
 
 function init() {
   inquirer
     .prompt([
-      {
-        name: "text",
-        message: "Enter text for your logo",
-        type: "input",
-        suffix: " (up to 3 characters) :",
-        transformer: answer => answer.toUpperCase().slice(0,3),
-        filter: answer => answer.slice(0,3),
-      },
       {
         name: "shape",
         message: "Choose the shape of your logo",
@@ -20,15 +12,29 @@ function init() {
         suffix: " :",
       },
       {
-        name: "colour",
+        name: "text",
+        message: "Enter text for your logo",
+        type: "input",
+        suffix: " (up to 3 characters) :",
+      },
+      {
+        name: "textColor",
         message:
-          "Enter your logo's colour",
+          "Enter your logo's text color",
+        type: "input",
+        suffix: " (keyword and hexadecimal values allowed) :",
+      },
+      {
+        name: "bgColor",
+        message:
+          "Enter your logo's background color",
         type: "input",
         suffix: " (keyword and hexadecimal values allowed) :",
       },
     ])
     .then((answers) => {
-      console.log(answers);
+      const logo = createLogo(answers);
+      console.log(logo)
     });
 }
 init();
