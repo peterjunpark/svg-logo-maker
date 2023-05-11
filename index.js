@@ -1,10 +1,6 @@
 const inquirer = require("inquirer");
 const maxLengthInputPrompt = require("inquirer-maxlength-input-prompt");
-const {
-  makeLogo,
-  writeLogo,
-  isValidColor,
-} = require("./lib/utils.js");
+const { makeLogo, writeLogo, isValidColor } = require("./lib/utils.js");
 
 inquirer.registerPrompt("maxlength-input", maxLengthInputPrompt);
 console.log(
@@ -46,6 +42,7 @@ inquirer
     },
   ])
   .then((answers) => {
+    // Instantiate shape. Use render method to convert to SVG string.
     const logo = makeLogo(answers).render();
     writeLogo(logo);
   });
