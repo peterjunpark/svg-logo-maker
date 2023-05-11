@@ -3,8 +3,7 @@ const maxLengthInputPrompt = require("inquirer-maxlength-input-prompt");
 const {
   makeLogo,
   writeLogo,
-  isColorHex,
-  isColorKeyword,
+  isValidColor,
 } = require("./lib/utils.js");
 
 inquirer.registerPrompt("maxlength-input", maxLengthInputPrompt);
@@ -32,7 +31,7 @@ inquirer
       message: "Enter your logo's text color",
       type: "input",
       validate: (answer) => {
-        if (isColorHex(answer) || isColorKeyword(answer)) return true;
+        if (isValidColor(answer)) return true;
         return "Unrecognized color. Try again.";
       },
     },
@@ -41,7 +40,7 @@ inquirer
       message: "Enter your logo's background color",
       type: "input",
       validate: (answer) => {
-        if (isColorHex(answer) || isColorKeyword(answer)) return true;
+        if (isValidColor(answer)) return true;
         return "Unrecognized color. Try again.";
       },
     },
