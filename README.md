@@ -39,6 +39,8 @@ Node.js and npm are required to install this application. This application's fun
 
 
 [Video walkthrough](https://www.youtube.com/watch?v=td3wjK2Guc8) on using the application.
+
+See [examples](./examples)here.
 ## Contributing
 N/A
 
